@@ -1,9 +1,11 @@
 from random import shuffle
 
+
 class Card:
     _values = {'Ace': 11, 'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 
                'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten': 10, 'Jack': 10, 'Queen': 10, 
                'King': 10}
+
     def __init__(self, suit, rank):
         self._suit = suit
         self._rank = rank
@@ -18,10 +20,12 @@ class Card:
     def set_value(self, value):
         self._value = value
 
+
 class Deck:
     _suits = ('Clubs', 'Diamonds', 'Hearts', 'Spades')
     _ranks = ('Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 
               'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King')
+
     def __init__(self):
         self._cards = []
         for suit in Deck._suits:
@@ -31,6 +35,7 @@ class Deck:
     
     def remove_top(self):
         return self._cards.pop()
+
 
 class CardPlayer:
     def __init__(self):
@@ -63,6 +68,7 @@ class CardPlayer:
                 card.set_value(1)
         print('Ace\'s value has been changed from 11 to 1!')
 
+
 class Player(CardPlayer):
     def __init__(self, chips):
         self._hands = []
@@ -81,6 +87,7 @@ class Player(CardPlayer):
     def return_cards(self):
         self._hands = []
 
+
 class Dealer(CardPlayer):
     def print_details(self, reveal):
         if reveal:
@@ -89,6 +96,7 @@ class Dealer(CardPlayer):
         else:
             print(f'Dealer\'s hands: {self._hands[0]} and a HIDDEN CARD')
             print(f'Dealer\'s hands\' value: {self._hands[0].get_value()} plus HIDDEN VALUE')
+
 
 def set_chips():
     while True:
@@ -99,8 +107,8 @@ def set_chips():
             return chips
         except:
             print('Warning: Invalid input.')
-            continue
             
+
 def set_bet():
     while True:
         try:
@@ -108,6 +116,7 @@ def set_bet():
             return bet
         except:
             print('Warning: Invalid input.')
+
 
 def set_choice():
     while True:
@@ -119,6 +128,7 @@ def set_choice():
                 raise
         except:
             print('Warning: Invalid input.')
+
 
 def check_winner(player, dealer):
     winner = ''
@@ -137,7 +147,7 @@ def check_winner(player, dealer):
             winner = 'Dealer'
     
     return winner
-    
+
 
 def main():
     play = True
@@ -246,6 +256,7 @@ def main():
         
         print(f'-------------------------------------- Round {rounds} End --------------------------------------')
         rounds += 1
+
 
 if __name__ == '__main__':
     main()
